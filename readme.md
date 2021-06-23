@@ -79,3 +79,4 @@ The project does not end there. Like I mentioned befor, I want to add some more 
     -fix rendering issues in darkmode 
     -add signal and connection diagnosys to the tally system.
     -fix autocompletion bug on commandline
+    -remove depricated functions and variables
