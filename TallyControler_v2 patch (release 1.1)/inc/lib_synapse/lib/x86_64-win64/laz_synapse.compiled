@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="P:\M_Programme\lazarus\fpc\3.2.0\bin\x86_64-win64\fpc.exe" Date="1357350767"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -FuP:\M_Programme\lazarus\packager\units\x86_64-win64 &quot;-FuC:\Users\Elias Wagner\Desktop\TallyLight\LAZARUS\TallyControler_test1\inc\lib_synapse\&quot; &quot;-FUC:\Users\Elias Wagner\Desktop\TallyLight\LAZARUS\TallyControler_test1\inc\lib_synapse\lib\x86_64-win64\&quot; laz_synapse.pas"/>
+</CONFIG>

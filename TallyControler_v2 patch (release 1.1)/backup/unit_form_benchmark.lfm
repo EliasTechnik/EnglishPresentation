@@ -1,0 +1,80 @@
+object form_benchmark: Tform_benchmark
+  Left = -385
+  Height = 219
+  Top = 453
+  Width = 226
+  Caption = 'Benchmark'
+  ClientHeight = 219
+  ClientWidth = 226
+  OnCreate = FormCreate
+  LCLVersion = '2.0.10.0'
+  object cb_enable_benchmark: TCheckBox
+    Left = 8
+    Height = 19
+    Top = 8
+    Width = 177
+    Caption = 'Benchmark Modus aktivieren '
+    OnClick = cb_enable_benchmarkClick
+    TabOrder = 0
+  end
+  object rb_blink: TRadioButton
+    Left = 24
+    Height = 19
+    Top = 72
+    Width = 123
+    Caption = 'Synchrones Blinken'
+    Checked = True
+    TabOrder = 2
+    TabStop = True
+  end
+  object rb_stop: TRadioButton
+    Left = 24
+    Height = 19
+    Top = 96
+    Width = 180
+    Caption = 'Benchmark stoppen (all black)'
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 24
+    Height = 30
+    Top = 30
+    Width = 176
+    Caption = '(alle anderen Funktionen werden '#13#10'damit außer Kraft gesetzt)'
+    ParentColor = False
+  end
+  object se_intervall: TSpinEdit
+    Left = 8
+    Height = 23
+    Top = 136
+    Width = 115
+    MaxValue = 10000
+    MinValue = 1
+    TabOrder = 3
+    Value = 500
+  end
+  object Label2: TLabel
+    Left = 8
+    Height = 15
+    Top = 120
+    Width = 124
+    Caption = 'Aktualisierungen in ms:'
+    ParentColor = False
+  end
+  object bt_set_intervall: TButton
+    Left = 127
+    Height = 24
+    Top = 135
+    Width = 93
+    Caption = 'Set'
+    OnClick = bt_set_intervallClick
+    TabOrder = 4
+  end
+  object bt: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = btTimer
+    Left = 192
+    Top = 56
+  end
+end

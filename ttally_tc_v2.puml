@@ -1,0 +1,37 @@
+@startuml ttally
+class ttally{
+        -int id //remove
+        -int dip_nr
+        -byte device_health
+        -trgb afront_color
+        -trgb aback_color
+        -trgb efront_color
+        -trgb eback_color
+        -tip tally_ip //remove
+        -byte emode
+        -byte eanimation
+        -byte amode
+        -byte aanimation
+        -bool push_update
+        -bool online
+        +create(_id: integer)
+        +create_dummy()
+        +void decode_tally_info(msg: array of byte)
+        +void set_front_color(_front_color:trgb)
+        +void set_back_color(_back_color:trgb)
+        +void set_online(_online:boolean)
+        +void init_tally(_msg: array of byte)
+        +bool is_online()
+        +int get_id()
+        +int get_dip_nr()
+        +byte get_device_health()
+        +trgb get_front_color()
+        +trgb get_back_color()
+        +trgb get_efront_color()
+        +trgb get_eback_color()
+        +string get_tally_ip() //remove
+        +tip get_tally_ip_bin() //remove
+        +bool new_data()
+        +string get_instr_str(msg_type:byte) 
+    }
+@enduml

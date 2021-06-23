@@ -1,0 +1,28 @@
+@startuml tscene
+class tscene{
+        -int id    //remove
+        -ansistring name
+        -tlist assigned_tallys
+        -tsState state:tsState
+        -bool preview
+        -tcolorset cs
+        -tprocnoargs tallys_update
+        -void update_tallys()
+        -byte dimm(color:byte;dimmer:byte)  
+        +create(_name:ansistring;_id:integer;_cs:tcolorset)  //remove id
+        +void add_tally(_tally:ttally)
+        +void remove_tally(_tally: ttally)
+        +void rename(_name:ansistring)
+        +void set_state(_state:tsState)
+        +void set_preview(_preview:boolean)
+        +void set_tallys_update_trigger(p:tprocnoargs)
+        +void set_cs(_cs:tcolorset)
+        +tcolorset get_cs
+        +bool get_preview
+        +tsState get_state
+        +tlist get_tallys
+        +ansistring get_name
+        +int get_id     //remove
+        +destructor destroy  
+    }
+@enduml

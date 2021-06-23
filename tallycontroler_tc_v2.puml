@@ -1,0 +1,69 @@
+@startuml tallycontroler_v2
+class ttally_controler{
+    -tlazserial com
+    -twshandler ws
+    -tlist tallys
+    -tlist scenes
+    -tstringlist tasklist
+    -ansistring serialbuffer
+    -int last_msg_id
+    -tlog l
+    -tcommandline cli
+    -tmemo memo
+    -ansistring wanted_msg
+    -boolmsg_received
+    -tprocnoargs gui_update
+    -bool wait_for_msg:boolean
+    -string current_task:string
+    -tscene active_scene:tscene
+    -tscene preview_scene:tscene
+    -tscene next_scene:tscene
+    -bool studio_mode
+    -tswstate switch_state
+    -int next_tally_id:integer
+    -ansistring notification_text
+    -tcolorset global_colorset
+    -void init()
+    -void obs_update()
+    -void master_update(sender:tobject)
+    -void com_event(sender: tobject; Reason: THookSerialReason; const Value: string)
+    -void request(_type,_payload:ansistring)
+    -void check_tasklist()
+    -void change_scene_state(sname:ansistring;sstate:tsstate)
+    -void switch_studiomode(switch_to:integer)
+    -void decode_master_str(s:string)
+    -void init_master()
+    -void send_to_master(s:ansistring)
+    -int msg_start(s:ansistring)
+    -int msg_end(s: ansistring)
+    -ttally get_tally_by_ip(ip:string)
+    -ansistring as_int(s:ansistring)
+    -int exists_same_tally(dip_nr:byte)
+    +bool init_end
+    +create(_log:tlog;_cli:tcommandline)
+    +void set_com(_com:tlazserial)
+    +void set_gui_update_trigger(p:tprocnoargs)
+    +void assign_log(_memo:tmemo)
+    +void set_global_colorset(cs:tcolorset)
+    +void reset_global_colorset()
+    +void prime_tallys()
+    +void reload_tallys()
+    +void display_tally_ecolors()
+    + tcolorset get_global_colorset()
+    + bool start_com_comm()
+    + bool stop_com_comm()
+    + int start_obs_comm(_url:ansistring;_port:integer)
+    + int stop_obs_comm()
+    + tscene get_scene(index:integer)
+    + ttally get_tally(id:integer)
+    + ttally get_tally_by_dipnr(dip_nr:byte)
+    + int get_scene_count()
+    + tscene get_scene_by_name(sname:ansistring)
+    + int get_tallys_count()
+    + int get_tallys_online()
+    + tlist get_online_tallys()
+    + bool is_studiomode()
+    + bool is_obs_ready()
+    + ansistring get_notification_text()
+}
+@enduml

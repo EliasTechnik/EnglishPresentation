@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="23">
+      <Unit0>
+        <Filename Value="tally_test1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="201"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="unitmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="formmain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="494"/>
+        <CursorPos X="27" Y="504"/>
+        <FoldState Value=" T3kW03016M"/>
+        <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="log_core.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="73"/>
+        <CursorPos X="42" Y="156"/>
+        <UsageCount Value="256"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="inc\websocketsclient.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WebsocketsClient"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="47"/>
+        <CursorPos X="97" Y="56"/>
+        <UsageCount Value="256"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="inc\wsmessages.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="256"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="inc\wsstream.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="239"/>
+        <CursorPos Y="266"/>
+        <UsageCount Value="256"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="inc\wsutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="133"/>
+        <CursorPos X="19" Y="84"/>
+        <UsageCount Value="256"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="inc\unit_ws_setup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="form_ws_setup"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="59"/>
+        <CursorPos X="24" Y="74"/>
+        <UsageCount Value="217"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="unit_form_log.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="form_log"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="8"/>
+        <CursorPos X="3" Y="36"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="inc\ws_handler_unit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="16"/>
+        <CursorPos Y="43"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="inc\jsontools.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="JsonTools"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="779"/>
+        <CursorPos X="29" Y="804"/>
+        <UsageCount Value="207"/>
+        <Loaded Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="unit_form_benchmark.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="form_benchmark"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="10"/>
+        <CursorPos X="26" Y="49"/>
+        <UsageCount Value="131"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="inc\unit_tally.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="1331"/>
+        <CursorPos X="17" Y="1367"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="unit_tally.pas"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="251"/>
+        <CursorPos X="23" Y="369"/>
+        <FoldState Value=" T3l00ZE pifkM0M219 pjVl60{n4]AOmZ062]9Pjb0H117]B3kJ058]objH0N8L"/>
+        <UsageCount Value="246"/>
+        <Bookmarks Count="1">
+          <Item0 Y="668"/>
+        </Bookmarks>
+      </Unit13>
+      <Unit14>
+        <Filename Value="unit_ws_container.pas"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="55"/>
+        <CursorPos X="5" Y="82"/>
+        <UsageCount Value="158"/>
+        <Loaded Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="obsws.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="29"/>
+        <CursorPos X="35" Y="54"/>
+        <UsageCount Value="122"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="inc\websocketserver.pas"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="25"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="inc\json_class.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="42" Y="22"/>
+        <UsageCount Value="23"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\..\..\..\LED Control\Self_made\tpm2_laz_class_test\log_core.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <UsageCount Value="115"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="chatClient.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="97"/>
+        <CursorPos X="24" Y="97"/>
+        <UsageCount Value="57"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\TLazSerial-master\lazserial.pas"/>
+        <UnitName Value="LazSerial"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="318"/>
+        <CursorPos X="72" Y="345"/>
+        <UsageCount Value="101"/>
+        <Loaded Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="P:\M_Programme\lazarus\lcl\include\customlistbox.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="176"/>
+        <CursorPos Y="203"/>
+        <UsageCount Value="6"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="P:\M_Programme\lazarus\lcl\interfaces\win32\win32listsl.inc"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="127"/>
+        <CursorPos Y="153"/>
+        <UsageCount Value="73"/>
+        <Loaded Value="True"/>
+      </Unit22>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="inc\unit_tally.pas"/>
+        <Caret Line="210" Column="26" TopLine="183"/>
+      </Position1>
+      <Position2>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="432" Column="48" TopLine="398"/>
+      </Position2>
+      <Position3>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="11" Column="110"/>
+      </Position3>
+      <Position4>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="439" Column="53" TopLine="404"/>
+      </Position4>
+      <Position5>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="114" Column="22" TopLine="102"/>
+      </Position5>
+      <Position6>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="445" Column="23" TopLine="402"/>
+      </Position6>
+      <Position7>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="446" Column="23" TopLine="403"/>
+      </Position7>
+      <Position8>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="447" Column="23" TopLine="404"/>
+      </Position8>
+      <Position9>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="448" Column="23" TopLine="405"/>
+      </Position9>
+      <Position10>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="450" Column="23" TopLine="407"/>
+      </Position10>
+      <Position11>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="118" Column="35" TopLine="84"/>
+      </Position11>
+      <Position12>
+        <Filename Value="inc\unit_tally.pas"/>
+        <Caret Line="178" Column="80" TopLine="136"/>
+      </Position12>
+      <Position13>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="472" Column="3" TopLine="347"/>
+      </Position13>
+      <Position14>
+        <Filename Value="inc\unit_tally.pas"/>
+        <Caret Line="1367" Column="17" TopLine="1331"/>
+      </Position14>
+      <Position15>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="458" Column="13" TopLine="404"/>
+      </Position15>
+      <Position16>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="472" Column="69" TopLine="353"/>
+      </Position16>
+      <Position17>
+        <Filename Value="inc\unit_ws_setup.pas"/>
+        <Caret Line="41" Column="32" TopLine="14"/>
+      </Position17>
+      <Position18>
+        <Filename Value="unit_form_log.pas"/>
+        <Caret Line="22" Column="8"/>
+      </Position18>
+      <Position19>
+        <Filename Value="inc\unit_ws_setup.pas"/>
+        <Caret Line="47" Column="23" TopLine="14"/>
+      </Position19>
+      <Position20>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="153" TopLine="111"/>
+      </Position20>
+      <Position21>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="155" TopLine="113"/>
+      </Position21>
+      <Position22>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="179" Column="23" TopLine="143"/>
+      </Position22>
+      <Position23>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="122" Column="30" TopLine="95"/>
+      </Position23>
+      <Position24>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="518" Column="36" TopLine="182"/>
+      </Position24>
+      <Position25>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="531" Column="37" TopLine="476"/>
+      </Position25>
+      <Position26>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="528" Column="19" TopLine="502"/>
+      </Position26>
+      <Position27>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="524" Column="25" TopLine="505"/>
+      </Position27>
+      <Position28>
+        <Filename Value="..\TLazSerial-master\lazserial.pas"/>
+        <Caret Line="345" Column="72" TopLine="318"/>
+      </Position28>
+      <Position29>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="524" Column="16" TopLine="497"/>
+      </Position29>
+      <Position30>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="504" Column="27" TopLine="494"/>
+      </Position30>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

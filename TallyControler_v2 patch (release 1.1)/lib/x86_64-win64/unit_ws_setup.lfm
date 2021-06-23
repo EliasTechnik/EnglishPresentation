@@ -1,0 +1,92 @@
+object form_ws_setup: Tform_ws_setup
+  Left = -368
+  Height = 257
+  Top = 130
+  Width = 291
+  Caption = 'Websocket Setup'
+  ClientHeight = 257
+  ClientWidth = 291
+  OnCreate = FormCreate
+  LCLVersion = '2.0.10.0'
+  object e_url: TLabeledEdit
+    Left = 8
+    Height = 23
+    Top = 48
+    Width = 276
+    EditLabel.Height = 15
+    EditLabel.Width = 276
+    EditLabel.Caption = 'IP / URL'
+    EditLabel.ParentColor = False
+    Enabled = False
+    TabOrder = 0
+    Text = '127.0.0.1'
+  end
+  object se_port: TSpinEdit
+    Left = 8
+    Height = 23
+    Top = 96
+    Width = 88
+    MaxValue = 65535
+    TabOrder = 1
+    Value = 4444
+  end
+  object bp: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 217
+    Width = 279
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 2
+    ShowButtons = [pbOK, pbCancel]
+  end
+  object Port: TLabel
+    Left = 8
+    Height = 15
+    Top = 80
+    Width = 22
+    Caption = 'Port'
+    ParentColor = False
+  end
+  object cb_local: TCheckBox
+    Left = 8
+    Height = 19
+    Top = 8
+    Width = 198
+    Caption = 'Mit OBS auf diesem PC verbinden'
+    Checked = True
+    OnChange = cb_localChange
+    State = cbChecked
+    TabOrder = 3
+  end
+  object e_pw: TLabeledEdit
+    Left = 8
+    Height = 23
+    Top = 176
+    Width = 276
+    EchoMode = emPassword
+    EditLabel.Height = 15
+    EditLabel.Width = 276
+    EditLabel.Caption = 'Passwort'
+    EditLabel.ParentColor = False
+    Enabled = False
+    PasswordChar = '*'
+    TabOrder = 4
+  end
+  object cb_auth: TCheckBox
+    Left = 8
+    Height = 19
+    Top = 136
+    Width = 185
+    Caption = 'OBS benötigt Authentifizierung'
+    OnChange = cb_authChange
+    TabOrder = 5
+  end
+end

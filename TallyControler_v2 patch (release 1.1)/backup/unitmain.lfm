@@ -1,0 +1,652 @@
+object formmain: Tformmain
+  Left = -1512
+  Height = 689
+  Top = 183
+  Width = 1122
+  Caption = 'Tally Control Software'
+  ClientHeight = 669
+  ClientWidth = 1122
+  Menu = mm
+  OnCreate = FormCreate
+  LCLVersion = '2.0.10.0'
+  object pleft: TPanel
+    Left = 0
+    Height = 646
+    Top = 0
+    Width = 488
+    Align = alLeft
+    BevelOuter = bvNone
+    ClientHeight = 646
+    ClientWidth = 488
+    TabOrder = 0
+    object gb_as_tally: TGroupBox
+      Left = 0
+      Height = 277
+      Top = 369
+      Width = 488
+      Align = alBottom
+      Caption = 'Tally zur Szene zuweisen'
+      ClientHeight = 257
+      ClientWidth = 484
+      TabOrder = 0
+      object cb_scene: TComboBox
+        Left = 12
+        Height = 23
+        Top = 16
+        Width = 453
+        AutoComplete = True
+        AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+        AutoDropDown = True
+        Enabled = False
+        ItemHeight = 15
+        OnEditingDone = cb_sceneEditingDone
+        TabOrder = 0
+        Text = 'cb_scene'
+      end
+      object Label2: TLabel
+        Left = 12
+        Height = 15
+        Top = 0
+        Width = 30
+        Caption = 'Szene'
+        ParentColor = False
+      end
+      object Label3: TLabel
+        Left = 12
+        Height = 15
+        Top = 45
+        Width = 94
+        Caption = 'Tallys in der Szene'
+        ParentColor = False
+      end
+      object clb_tallys: TCheckListBox
+        Left = 12
+        Height = 187
+        Top = 64
+        Width = 456
+        ExtendedSelect = False
+        Items.Strings = (
+          ''
+        )
+        ItemHeight = 17
+        OnClickCheck = clb_tallysClickCheck
+        TabOrder = 1
+        Data = {
+          0100000000
+        }
+      end
+    end
+    object gb_scenes: TGroupBox
+      Left = 0
+      Height = 369
+      Top = 0
+      Width = 488
+      Align = alClient
+      Caption = 'Szenen'
+      ClientHeight = 349
+      ClientWidth = 484
+      TabOrder = 1
+      object sg_scenes: TStringGrid
+        Left = 0
+        Height = 349
+        Top = 0
+        Width = 484
+        Align = alClient
+        AutoEdit = False
+        MouseWheelOption = mwGrid
+        RowCount = 1
+        TabOrder = 0
+        ColWidths = (
+          27
+          118
+          94
+          101
+          101
+        )
+        Cells = (
+          5
+          0
+          0
+          'ID'
+          1
+          0
+          'Szene'
+          2
+          0
+          'Status'
+          3
+          0
+          'Preview'
+          4
+          0
+          'Tallys verknüpft '
+        )
+      end
+    end
+  end
+  object right: TPanel
+    Left = 507
+    Height = 646
+    Top = 0
+    Width = 615
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 646
+    ClientWidth = 615
+    TabOrder = 1
+    object gb_tally_options: TGroupBox
+      Left = 0
+      Height = 294
+      Top = 352
+      Width = 615
+      Align = alBottom
+      Caption = 'Optionen'
+      ClientHeight = 274
+      ClientWidth = 611
+      TabOrder = 0
+      object gb_tally_colors: TGroupBox
+        Left = 0
+        Height = 274
+        Top = 0
+        Width = 448
+        Align = alLeft
+        Caption = 'Globale Farben'
+        ClientHeight = 254
+        ClientWidth = 444
+        TabOrder = 0
+        object Label4: TLabel
+          Left = 15
+          Height = 15
+          Top = 24
+          Width = 71
+          Caption = 'Kamera aktiv:'
+          ParentColor = False
+        end
+        object Label5: TLabel
+          Left = 143
+          Height = 15
+          Top = 0
+          Width = 58
+          Caption = 'Vorderseite'
+          ParentColor = False
+        end
+        object Label6: TLabel
+          Left = 236
+          Height = 15
+          Top = 0
+          Width = 50
+          Caption = 'Rückseite'
+          ParentColor = False
+        end
+        object Label7: TLabel
+          Left = 15
+          Height = 15
+          Top = 61
+          Width = 81
+          Caption = 'Kamera inaktiv:'
+          ParentColor = False
+        end
+        object Label8: TLabel
+          Left = 15
+          Height = 15
+          Top = 96
+          Width = 123
+          Caption = 'Kamera Vorausgewählt:'
+          ParentColor = False
+        end
+        object Label9: TLabel
+          Left = 15
+          Height = 15
+          Top = 133
+          Width = 56
+          Caption = 'Tally Ident:'
+          ParentColor = False
+        end
+        object cfront_on: TColorButton
+          Left = 144
+          Height = 24
+          Top = 24
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clRed
+          ColorDialog = cd
+          OnColorChanged = cfront_onColorChanged
+        end
+        object cfront_off: TColorButton
+          Left = 144
+          Height = 24
+          Top = 57
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clBlack
+          OnColorChanged = cfront_offColorChanged
+        end
+        object cfront_sel: TColorButton
+          Left = 144
+          Height = 24
+          Top = 92
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clBlack
+          OnColorChanged = cfront_selColorChanged
+        end
+        object cfront_ident: TColorButton
+          Left = 143
+          Height = 24
+          Top = 128
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clFuchsia
+          OnColorChanged = cfront_identColorChanged
+        end
+        object cback_on: TColorButton
+          Left = 232
+          Height = 24
+          Top = 24
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clRed
+          OnColorChanged = cback_onColorChanged
+        end
+        object cback_sel: TColorButton
+          Left = 232
+          Height = 24
+          Top = 92
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clYellow
+          OnColorChanged = cback_selColorChanged
+        end
+        object cback_ident: TColorButton
+          Left = 232
+          Height = 24
+          Top = 128
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clFuchsia
+          OnColorChanged = cback_identColorChanged
+        end
+        object cback_off: TColorButton
+          Left = 232
+          Height = 24
+          Top = 57
+          Width = 58
+          BorderWidth = 2
+          ButtonColorSize = 16
+          ButtonColor = clLime
+          OnColorChanged = cback_offColorChanged
+        end
+        object tb_front_dimmer: TTrackBar
+          Left = 16
+          Height = 30
+          Top = 176
+          Width = 416
+          LineSize = 8
+          Max = 255
+          OnChange = tb_front_dimmerChange
+          PageSize = 64
+          Position = 255
+          TabOrder = 0
+        end
+        object tb_back_dimmer: TTrackBar
+          Left = 16
+          Height = 27
+          Top = 232
+          Width = 416
+          LineSize = 32
+          Max = 255
+          OnChange = tb_back_dimmerChange
+          PageSize = 64
+          Position = 255
+          TabOrder = 1
+        end
+        object Label10: TLabel
+          Left = 16
+          Height = 15
+          Top = 160
+          Width = 107
+          Caption = 'Dimmer Vorderseite:'
+          ParentColor = False
+        end
+        object Label11: TLabel
+          Left = 15
+          Height = 15
+          Top = 208
+          Width = 99
+          Caption = 'Dimmer Rückseite:'
+          ParentColor = False
+        end
+        object b_colorreset: TButton
+          Left = 328
+          Height = 31
+          Top = 16
+          Width = 96
+          Caption = 'Zurücksetzen'
+          OnClick = b_colorresetClick
+          TabOrder = 2
+        end
+      end
+      object gb_single_tally: TGroupBox
+        Left = 448
+        Height = 274
+        Top = 0
+        Width = 163
+        Align = alClient
+        Caption = 'Individuelle Einstellungen'
+        ClientHeight = 254
+        ClientWidth = 159
+        TabOrder = 1
+        object cb_single_tally: TComboBox
+          Left = 8
+          Height = 23
+          Top = 1
+          Width = 128
+          ItemHeight = 15
+          OnEditingDone = cb_single_tallyEditingDone
+          TabOrder = 0
+          Text = 'cb_single_tally'
+        end
+        object cb_flip_sides: TCheckBox
+          Left = 8
+          Height = 19
+          Top = 35
+          Width = 109
+          Caption = 'Seiten umkehren'
+          TabOrder = 1
+        end
+        object tb_ident_tally: TToggleBox
+          Left = 2
+          Height = 32
+          Top = 64
+          Width = 132
+          Caption = 'Tally hervorheben'
+          TabOrder = 2
+        end
+      end
+    end
+    object rtop: TPanel
+      Left = 0
+      Height = 352
+      Top = 0
+      Width = 615
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 352
+      ClientWidth = 615
+      TabOrder = 1
+      object gb_tally_status: TGroupBox
+        Left = 0
+        Height = 352
+        Top = 0
+        Width = 334
+        Align = alClient
+        Caption = 'Verbundene Tallys'
+        ClientHeight = 332
+        ClientWidth = 330
+        TabOrder = 0
+        object sg_tallys: TStringGrid
+          Left = 0
+          Height = 332
+          Top = 0
+          Width = 330
+          Align = alClient
+          ColCount = 4
+          RowCount = 1
+          TabOrder = 0
+          Cells = (
+            4
+            0
+            0
+            'Dip-Nr'
+            1
+            0
+            'Front'
+            2
+            0
+            'Back'
+            3
+            0
+            'Status'
+          )
+        end
+      end
+      object rtr: TPanel
+        Left = 334
+        Height = 352
+        Top = 0
+        Width = 281
+        Align = alRight
+        ClientHeight = 352
+        ClientWidth = 281
+        TabOrder = 1
+        object gb_master_conn: TGroupBox
+          Left = 1
+          Height = 191
+          Top = 160
+          Width = 279
+          Align = alClient
+          Caption = 'Tally-Master Verbindung'
+          ClientHeight = 171
+          ClientWidth = 275
+          TabOrder = 0
+          object tb_com_conn: TToggleBox
+            Left = 144
+            Height = 34
+            Top = 5
+            Width = 111
+            AllowGrayed = True
+            Caption = 'Verbinden'
+            Enabled = False
+            OnClick = tb_com_connClick
+            TabOrder = 0
+          end
+          object cb_com_port: TComboBox
+            Left = 16
+            Height = 23
+            Top = 16
+            Width = 110
+            ItemHeight = 15
+            ItemIndex = 0
+            Items.Strings = (
+              'SELECT COM PORT'
+            )
+            OnChange = cb_com_portChange
+            TabOrder = 1
+            Text = 'SELECT COM PORT'
+          end
+          object Label1: TLabel
+            Left = 16
+            Height = 15
+            Top = 0
+            Width = 53
+            Caption = 'COM Port'
+            ParentColor = False
+          end
+          object sh_com_status: TShape
+            Left = 8
+            Height = 19
+            Top = 48
+            Width = 29
+            Brush.Color = clRed
+            Pen.Color = clBackground
+            Shape = stCircle
+          end
+          object l_com_status: TLabel
+            Left = 41
+            Height = 63
+            Top = 48
+            Width = 216
+            AutoSize = False
+            Caption = 'Nicht verbunden'
+            ParentColor = False
+            WordWrap = True
+          end
+          object b_reload_tallys: TButton
+            Left = 144
+            Height = 34
+            Top = 112
+            Width = 111
+            Caption = 'Tallys neu laden'
+            OnClick = b_reload_tallysClick
+            TabOrder = 2
+          end
+        end
+        object gb_obs_conn: TGroupBox
+          Left = 1
+          Height = 159
+          Top = 1
+          Width = 279
+          Align = alTop
+          Caption = 'OBS Websocket Verbindung'
+          ClientHeight = 139
+          ClientWidth = 275
+          TabOrder = 1
+          object b_ws_setup: TButton
+            Left = 8
+            Height = 33
+            Top = 7
+            Width = 131
+            Caption = 'Verbindung einrichten'
+            OnClick = b_ws_setupClick
+            TabOrder = 0
+          end
+          object l_ws_status: TLabel
+            Left = 40
+            Height = 63
+            Top = 48
+            Width = 216
+            AutoSize = False
+            Caption = 'Nicht verbunden'
+            ParentColor = False
+            WordWrap = True
+          end
+          object sh_ws_status: TShape
+            Left = 8
+            Height = 19
+            Top = 48
+            Width = 29
+            Brush.Color = clRed
+            Pen.Color = clBackground
+            Shape = stCircle
+          end
+          object tb_ws_conn: TToggleBox
+            Left = 144
+            Height = 33
+            Top = 7
+            Width = 117
+            Caption = 'Verbinden'
+            OnClick = tb_ws_connClick
+            TabOrder = 1
+          end
+        end
+      end
+    end
+  end
+  object sb: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 646
+    Width = 1122
+    Panels = <    
+      item
+        Text = 'OBS Modus:'
+        Width = 200
+      end    
+      item
+        Text = 'Verbundene Tallys: '
+        Width = 50
+      end>
+    SimplePanel = False
+  end
+  object spliter_1: TSplitter
+    Left = 488
+    Height = 646
+    Top = 0
+    Width = 19
+  end
+  object serial: TLazSerial
+    Active = False
+    BaudRate = br115200
+    DataBits = db8bits
+    Parity = pNone
+    FlowControl = fcHardware
+    StopBits = sbOne
+    Device = 'COM1'
+    RcvLineCRLF = False
+    Left = 840
+    Top = 248
+  end
+  object cd: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 1064
+    Top = 560
+  end
+  object mm: TMainMenu
+    Left = 1064
+    Top = 608
+    object mi_config: TMenuItem
+      Caption = 'Config'
+      object mi_save: TMenuItem
+        Caption = 'Konfiguration speichern'
+        OnClick = mi_saveClick
+      end
+      object mi_save_under: TMenuItem
+        Caption = 'Konfiguration speichern unter'
+      end
+      object mi_load: TMenuItem
+        Caption = 'Konfiguration laden'
+      end
+      object mi_darkmode: TMenuItem
+        Caption = 'Darkmode'
+        Checked = True
+        ShowAlwaysCheckable = True
+        OnClick = mi_darkmodeClick
+      end
+    end
+    object mi_tools: TMenuItem
+      Caption = 'Werkzeuge'
+      object mi_log: TMenuItem
+        Caption = 'Log öffnen'
+        ShortCut = 16460
+        OnClick = mi_logClick
+      end
+      object mi_benchmark: TMenuItem
+        Caption = 'System testen'
+        ShortCut = 16450
+        OnClick = mi_benchmarkClick
+      end
+    end
+    object mi_over: TMenuItem
+      Caption = 'Über'
+    end
+  end
+end

@@ -1,0 +1,33 @@
+object form_log: Tform_log
+  Left = -1057
+  Height = 356
+  Top = 119
+  Width = 634
+  Caption = 'Log und CLI'
+  ClientHeight = 356
+  ClientWidth = 634
+  OnCreate = FormCreate
+  LCLVersion = '2.0.10.0'
+  object m_log: TMemo
+    Left = 0
+    Height = 333
+    Top = 0
+    Width = 634
+    Align = alClient
+    Color = clBackground
+    Font.Color = clLime
+    ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 0
+  end
+  object e_command: TEdit
+    Left = 0
+    Height = 23
+    Top = 333
+    Width = 634
+    Align = alBottom
+    TabOrder = 1
+    TextHint = '...input command'
+  end
+end
