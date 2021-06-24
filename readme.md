@@ -52,7 +52,7 @@ The heavy lifting is done mostly by three classes: ttally, tscene and ttally_con
 
 ![ttally class](img/ttally.png)
 ![tscene class](img/tscene.png)
-![ttally_controler class](img/ttally_controler_v2.png)
+![ttally_controler class](img/ttallycontroler_v2.png)
 
 As you can see the ttally_controler class is equipped with a variety of functions. <-- Add more here --> In the version 3.0, which I am currently working on, the ttally_controler gets reduced to its main functionality and the communication with the master gets outsourced. We will be concentrating on the init() procedure. (Pascal uses the word "procedure" in place of "void").
 
