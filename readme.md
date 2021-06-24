@@ -19,33 +19,37 @@ We used the Open Brodcaster Software (OBS) to stream so we needed a cheep tally 
 
 I thught about the project and how I can accomplish all the features in a practicable manner. For convinience I wanted to do the solution to be wireless but also without the hassle to connect to an existing network. The solution I came up with looks like that: 
 
-<image overview.png>
 ![Overview of the system components](img/overview.png)
 
 ### Client (Tallylight)
 
 The actual lights consist of 6 addressable LEDs, five dip-switches and a ESP32 development board. The power is feed througth USB. Ether from an powerbank or a USB charger.
-<image ClientInsight>
+![Inside view of one Tallylight](img/tally_open.jpg)
 In the moment, everything is housed in a cheep, self crafted housing but I plan on creating a 3d-printed version of it. The tally has an antenna to improve the wifi-range and uses the flash-socket of the camera to mount on.
-<image ClientOn Camera>
+![Tallylight mounted on a camera](img/tally_on_camera.jpg)
 
 ### Master (Basestation)
 
 Because the 802.11 LR mode is specific for the ESP32 the master has to be an ESP32 also. It has to be connected to an USB port at the pc wich is running the control software. The clients connects on it's own with the master and the master routes the relevant information to each client. It should also detect the system health (like Tallys wich are offline or data inconsistencies). 
-<image MasterClosed>
-<image MasterOpened>
+![Master closed](img/master_closed.jpg)
+![Master open](img/master_open.jpg)
+
 
 ### Controler 
 The Controler fullfills 3 roles. It connects with OBS and parses the neccesarry data for the system. It also communicates with the master to edit the tallys colors. As the brain of the system it also
 provides a graphical user interface to configure the system, assign tallys to the coresponding scenes and let the user customize the colors and light intensity. The System has to be usefull in the sunny morning and in the dark church without distracting the audiance. The Controler must work reliable because it runs on the same system wich is live. Tecnicly it can be runn from any Device within the same network but for the better response time it should be run on the live system. 
 
-<image ControlerUIConnected>
+![Controler when connected to OBS and the Master](img/ControlerUIConnected.png)
 
 The Controler is programmed in ObjectPascal with the Lazarus IDE. Therefor it's mostly objectoriented designed and driven by events. The latest stable build of the controler is version 2.1, wich I am going to show you. It has the most importent fetures implemented and working plus some additional quality of life things. (It was also used in 3 different streams where I discovered more problems related to the reliability of the system and had the opurtunity to hear other opinions and experiences. )-->maybe remove...
 
 The heavy lifting is done moastly by three classes: ttally, tscene and ttally_controler.
-<image classdiagram>
-As you can see the ttally_controler class is packt with a variety of functions. In the version 3.0, wich I am currently workin on, the ttally_controler gets reduced to its main functionality and the communication with the master gets outsourced. We will be concentrating on the init() procedure. (Pascal uses the word "procedure" in place of "void"); 
+
+![ttally class](img/ttally.png)
+![tscene class](img/tscene.png)
+![ttally_controler class](img/ttally_controler_v2.png)
+
+As you can see the ttally_controler class is packt with a variety of functions. <-- Add more here --> In the version 3.0, wich I am currently workin on, the ttally_controler gets reduced to its main functionality and the communication with the master gets outsourced. We will be concentrating on the init() procedure. (Pascal uses the word "procedure" in place of "void"); 
 
 ## Code Snippet
 The init() procedure is called multiple times after the websocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene wich is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent init() to block the programm while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task -should OBS answer- into an tasklist.
@@ -58,6 +62,7 @@ init() reads the variable currenttask and decodes the response from OBS. For par
 Note that the order of requests matter. First I have to find out in wich mode OBS currently runs. After that I have to get a list of all scenes. The coresponding request delivers also the current output scene. After I have all the scenes created as objects and initialized I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are  stored in extra variables for quick access.
 
 The l.print() is a function of the tlog object. The controler is equiped with an log window wich I used for debugging. I show this later in the demo.
+![log output of init() procedure](img/output_of_init().PNG)
 
 ### demonstration of OBS connection
 --Show how it connects and taht the information is correct
