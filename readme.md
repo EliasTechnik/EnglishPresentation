@@ -20,6 +20,7 @@ We used the Open Brodcaster Software (OBS) to stream so we needed a cheep tally 
 I thught about the project and how I can accomplish all the features in a practicable manner. For convinience I wanted to do the solution to be wireless but also without the hassle to connect to an existing network. The solution I came up with looks like that: 
 
 <image overview.png>
+![Overview of the system components](img/overview.png)
 
 ### Client (Tallylight)
 
