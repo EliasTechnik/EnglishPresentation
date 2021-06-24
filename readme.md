@@ -42,17 +42,18 @@ Because the 802.11 LR mode is specific for the ESP32 the master must be an ESP32
 
 ### Controller
 
-The Controller fulfils 3 roles. It connects with OBS and parses the necessary data for the system. It also communicates with the master to edit the colours of the Tally lights. As the brain of the system, it also provides a graphical user interface to configure the system, assign Tallys to the corresponding scenes and let the user customize the colours and light intensity. The System must be useful in the sunny morning and in the dark church without distracting the audience. The Controller must work reliable because it runs on the same system which is live. Technically it can be run from any Device within the same network but for the better response time it should be run on the live system.
+The Controller fulfils 3 roles. It connects with OBS and parses the necessary data for the system. It also communicates with the master to edit the colours of the Tally lights. As the brain of the system, it also provides a graphical user interface to configure the system, assign Tallys to the corresponding scenes and let the user customize the colours and light intensity.
+That feature is important because the System must be useful in the sunny morning and in the dark church without distracting the audience or the camera operator. The Controller must work also reliable because it runs on the same system which is running the live stream. Technically it can be run from any Device within the same network but for the better response time it should be run on the live system.
 
 ![Controller when connected to OBS and the Master](img/ControlerUIConnected.PNG)
 
 The Controller is programmed in Object Pascal with the Lazarus IDE. Therefor its mostly object-oriented designed and driven by events. The latest stable build of the controller is version 2.1, which I am going to show you. It has the most important features implemented and working plus some additional quality of life things. (It was also used in 3 different streams where I discovered more problems related to the reliability of the system and had the opportunity to hear other opinions and experiences. )-->maybe remove...
 
-The heavy lifting is done mostly by three classes: ttally, tscene and ttally_controler.
+The heavy lifting is done mostly by three classes: ttally, tscene and ttally_controler. (Yes I noticed the incorrect spelling of Controller. But to keep things consistent and because its hard to change it in the implementation I stick to it. :-/)
 
 ![ttally class](img/ttally.png)
 ![tscene class](img/tscene.png)
-![ttally_controler class](img/ttallycontroler_v2.png)
+![ttally_controler class](img/ttally_controler.png)
 
 As you can see the ttally_controler class is equipped with a variety of functions. <-- Add more here --> In the version 3.0, which I am currently working on, the ttally_controler gets reduced to its main functionality and the communication with the master gets outsourced. We will be concentrating on the init() procedure. (Pascal uses the word "procedure" in place of "void").
 
