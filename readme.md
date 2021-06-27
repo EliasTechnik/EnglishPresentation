@@ -48,8 +48,11 @@ As you can see the `ttally_controler` class is equipped with a variety of functi
 
 ## Code Snippet
 
-The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task (if OBS answers) into an task list.
-The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
+The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. 
+
+To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task (if OBS answers with correct information) into an task list.
+
+The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as `currenttask`.
 
 ```Delphi ttally_controler.init()
 procedure ttally_controler.init;  //Init of the controller
@@ -117,12 +120,11 @@ begin
   end;
   gui_update; //updates gui
 end;
-
 ```
 
 `init()` reads the variable `currenttask` and decodes the response from OBS. For parsing the JSON I use then jsontools library (<https://github.com/sysrpl/JsonTools >). It is simple to use: I create a `tjsonnode` (`j:=tjsonnode.create;`) and let it parse the received message. If that succeeds I use `j.Find('\<keyword\>')` to get the value of that field.
 
-Note that the order of requests matter. First, I have to find out in which mode OBS currently runs. After that I must get a list of all scenes. The corresponding request also delivers the current output scene. After I have all the scenes created as objects and initialized, I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are stored in extra variables for quick access.
+Note that the order of requests matters. First, I have to find out in which mode OBS currently runs. After that I must get a list of all scenes. The corresponding request also delivers the current output scene. After I have all the scenes created as objects and initialized, I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are stored in extra variables for quick access.
 
 The `l.print()` is a function of the `tlog` object. The controller is equipped with an log window which I use for debugging. The output from `init()` starts with `INR:` :
 
@@ -130,7 +132,15 @@ The `l.print()` is a function of the `tlog` object. The controller is equipped w
 
 ## Conclusion of the Project
 
-For now, there are more Tally Light solutions for OBS then it was at the start of the project but nothing similar to my solution. I am happy that the essential of the system work reliable enough to be tested in production. In the moment I redesign the serial communication between the Controller and the Master because I wasn't happy about the solution and the protocol design. As the project grows, I extended the `tlog` library with a command line and autocompletion. Therefore, debugging gets way easier because now I can trigger and test specific functions on its own without resetting the program or add extra elements to the UI.  
+For now, there are more Tally Light solutions for OBS then it was at the start of the project but nothing similar to my solution. I am happy that the essential of the system work reliable enough to be tested in production. 
+
+In the moment I redesign the serial communication between the Controller and the Master because I wasn't particular happy about the protocol design and the solution in general.
+
+*Side fact: As the project grows, I extended the `tlog` library with a command line and autocompletion. Therefore, debugging gets way easier because now I can trigger and test specific functions on its own without resetting the program or add extra elements to the UI. Maybe I convert tlog to an complete UI component which can be added to any Lazarus project.*  
+
+![cam active front](img/lo_res/cam_active_front.jpg)
+![cam preview](img/lo_res/cam_preview.jpg)
+![cam inactive back](img/lo_res/cam_inactive_back.jpg)
 
 ### Further improvements / ToDo's
 
