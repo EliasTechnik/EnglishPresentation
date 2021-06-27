@@ -11,7 +11,7 @@ Tally Lights are, mostly red and green, lights which are mounted on each camera.
 
 ## Parts of the Project
 
-I thought about the project and how I can accomplish all the features in a practicable manner. For convenience I wanted to do the solution to be wireless but also without the hassle to connect to an existing network. The solution I came up with looks like that:
+I thought about the project and how I can accomplish all the features in a practicable manner. For convenience I wanted the solution to be wireless to but also without the hassle to connect to an existing network. The solution I came up with looks like that:
 
 ![Overview of the system components](img/overview.png)
 
@@ -43,7 +43,7 @@ The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttall
 
 ![ttally class](img/ttally.png)
 ![tscene class](img/tscene.png)
-![ttally_controler class](img/tscene.png)
+![ttally_controler class](img/ttally_controler.png)
 
 As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
 
@@ -54,7 +54,7 @@ The `init()` procedure is called multiple times after the WebSocket connection w
 The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
 
 ### tallycontroler.init()
-```
+```Delphi ttally_controler.init.pas
 procedure ttally_controler.init;  //Init of the controller
 var j,jarr:tjsonnode;
     s:tscene;
