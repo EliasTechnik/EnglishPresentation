@@ -6,8 +6,12 @@ A side project that I have been working on since December 2020.
 
 ## Background and Motivation
 
-Since the first lockdown in 2020 the need for live streams has gone up. The church in my hometown searched some people with enough technical confidence to do it. Because it was interesting and I head enough time to do it, I joined the team. As the streams got bigger we needed more coordination between the camera operator and the director. Additional to an intercom Tally Lights where needed.
-Tally Lights are, mostly red and green, lights which are mounted on each camera. They signal the camera operator if he is live or not. They also let the person in front of the camera know in which camera they should talk. We used the Open Broadcaster Software (OBS) to stream so we needed a cheap tally system which could be used with OBS. At the time I started working on a solution there was not any system available that suited our needs.
+Since the first lockdown in 2020 the need for live streams has gone up. The church in my hometown searched some people with enough technical confidence to do it. Because it was interesting and I head enough time to do it, I joined the team. As the streams got bigger we needed more coordination between the camera operator and the director.
+
+Additional to an intercom __Tally Lights__ where needed.
+Tally Lights are, mostly red and green, lights which are mounted on each camera. They signal the camera operator if he is live or not. They also let the person in front of the camera know in which camera they should talk.
+
+As we use the __Open Broadcaster Software (OBS)__ to stream, we needed a cheap tally system which could be used with OBS.
 
 ## Parts of the Project
 
