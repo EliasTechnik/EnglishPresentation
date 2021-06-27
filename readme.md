@@ -43,6 +43,7 @@ The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttall
 
 ![ttally class](img/lo_res/ttally.jpg)
 ![tscene class](img/lo_res/tscene.jpg)
+
 ![ttally_controler class](img/lo_res/ttally_controler.jpg)
 
 As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
