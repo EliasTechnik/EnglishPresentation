@@ -101,7 +101,6 @@ begin
             else begin
               init_end:=true;
               l.print('INR: Init End');
-              //current_task:='none'
             end;
            end;
   'init_preview':begin
@@ -137,13 +136,13 @@ For now, there are more Tally Light solutions for OBS then it was at the start o
 
 The project does not end there. Like I mentioned before, I want to add some more features and change specific things:
 
-- rewrite the Master firmware for better reliance and performance
-- implement ping feature and measure response time
-- dim the light of each tally individually
-- upgrade the Tally Lights with a button to signal the director that the camera operator is ready to go live
-- update the TallyProtocol to transmit the pushbutton signal
-- design a proper housing for the lights which is easy to assemble
-- fix rendering issues in darkmode
-- add signal and connection diagnosis to the tally system.
-- fix autocompletion bug on command line (sometimes it keeps suggesting a command not matching the user’s input)
-- remove deprecated functions and variables
++ rewrite the Master firmware for better reliance and performance
++ implement ping feature and measure response time
++ dim the light of each tally individually
++ upgrade the Tally Lights with a button to signal the director that the camera operator is ready to go live
++ update the TallyProtocol to transmit the pushbutton signal
++ design a proper housing for the lights which is easy to assemble
++ fix rendering issues in darkmode
++ add signal and connection diagnosis to the tally system.
++ fix autocompletion bug on command line (sometimes it keeps suggesting a command not matching the user’s input)
++ remove deprecated functions and variables
