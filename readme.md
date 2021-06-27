@@ -20,10 +20,9 @@ I thought about the project and how I can accomplish all the features in a pract
 The actual lights consist of 6 addressable LEDs, five dipswitches and a ESP32 development board. The power is feed through USB. Ether from an power bank or a USB charger.
 
 ![Inside view of one Tallylight](img/lo_res/tally_open.jpg)
+![Tallylight mounted on a camera](img/lo_res/tally_on_camera.jpg)
 
 In the moment, everything is housed in a cheap, self-crafted housing but I plan on creating a 3d-printed version of it. The tally has an antenna to improve the Wi-Fi-range and uses the flash-socket of the camera to mount on.
-
-![Tallylight mounted on a camera](img/lo_res/tally_on_camera.jpg)
 
 ### Master (Base station)
 
@@ -43,14 +42,13 @@ The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttall
 
 ![ttally class](img/lo_res/ttally.jpg)
 ![tscene class](img/lo_res/tscene.jpg)
-
 ![ttallycontroler class](img/lo_res/ttallycontroler.jpg)
 
 As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
 
 ## Code Snippet
 
-The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task -should OBS answer- into an task list.
+The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task (if OBS answers) into an task list.
 
 The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
 
@@ -132,11 +130,6 @@ The `l.print()` is a function of the `tlog` object. The controller is equipped w
 
 ![log output of init() procedure](img/lo_res/output_of_init.jpg)
 
-### demonstration of OBS connection
-
---Show how it connects and that the information is correct
---Show the log
---Show some scene switching
 
 ## Conclusion of the Project
 
@@ -145,13 +138,13 @@ For now, there are more Tally Light solutions for OBS then it was at the start o
 ### Further improvements / ToDo's
 
 The project does not end there. Like I mentioned before, I want to add some more features and change specific things:
-    -rewrite the Master firmware for better reliance and performance
-    -implement ping feature and measure response time
-    -dim the light of each tally individualy
-    -upgrade the Tally Lights with a button to signal the director that the camera operator is ready to go live
-    -update the TallyProtocol to transmit the pushbutton signal
-    -design a proper housing for the lights which is easy to assemble
-    -fix rendering issues in darkmode
-    -add signal and connection diagnosis to the tally system.
-    -fix autocompletion bug on command line (sometimes it keeps suggesting a command not matching the user’s input)
-    -remove deprecated functions and variables
+    - rewrite the Master firmware for better reliance and performance
+    - implement ping feature and measure response time
+    - dim the light of each tally individually
+    - upgrade the Tally Lights with a button to signal the director that the camera operator is ready to go live
+    - update the TallyProtocol to transmit the pushbutton signal
+    - design a proper housing for the lights which is easy to assemble
+    - fix rendering issues in darkmode
+    - add signal and connection diagnosis to the tally system.
+    - fix autocompletion bug on command line (sometimes it keeps suggesting a command not matching the user’s input)
+    - remove deprecated functions and variables
