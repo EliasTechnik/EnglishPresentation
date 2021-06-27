@@ -1,21 +1,13 @@
-https://LiaScript.github.io/course/?https://github.com/EliasTechnik/EnglishPresentation/blob/main/readme.md
+<https://LiaScript.github.io/course/?https://github.com/EliasTechnik/EnglishPresentation/blob/main/readme.md>
 
-# Introduction: Project LRTallyLights
+# Project LRTallyLights
 
-A short presentation of a side project that I have been working on since December 2020.
+A side project that I have been working on since December 2020.
 
-## Background  and Motivation
+## Background and Motivation
 
-Since the first lockdown in 2020 the need for live streams has gone up. The church in my hometown searched some people with enough technical confidence to do it. Because it was interesting and I head enough time to do it, I joined the team.
-
-During the lockdown we streamed every Sunday until summer. After that we streamed on special occasions like the Christmas or at easter. In that time, we learned a lot and got more professional, and the team did grow.
-
-With a growing Team we were able to use more perspectives. Every non static camera needs an camera operator which is responsible to react on things in front of the camera.
-We used an intercom to communicate between the director (he switches between cameras and does quality control) and the camera operators but that was not very reliable. So, I looked what bigger productions do. They use tally lights.
-
-Tally Lights are, mostly red and green, lights which are mounted on each camera. They signal the camera operator if he is live or not. They also let the person in front of the camera know in which camera they should talk.
-
-We used the Open Broadcaster Software (OBS) to stream so we needed a cheap tally system which could be used with OBS. At the time I started working on a solution there was not any system available that suited our needs.
+Since the first lockdown in 2020 the need for live streams has gone up. The church in my hometown searched some people with enough technical confidence to do it. Because it was interesting and I head enough time to do it, I joined the team. As the streams got bigger we needed more coordination between the camera operator and the director. Additional to an intercom Tally Lights where needed.
+Tally Lights are, mostly red and green, lights which are mounted on each camera. They signal the camera operator if he is live or not. They also let the person in front of the camera know in which camera they should talk. We used the Open Broadcaster Software (OBS) to stream so we needed a cheap tally system which could be used with OBS. At the time I started working on a solution there was not any system available that suited our needs.
 
 ## Parts of the Project
 
@@ -43,33 +35,109 @@ Because the 802.11 LR mode is specific for the ESP32 the master must be an ESP32
 ### Controller
 
 The Controller fulfils 3 roles. It connects with OBS and parses the necessary data for the system. It also communicates with the master to edit the colours of the Tally lights. As the brain of the system, it also provides a graphical user interface to configure the system, assign Tallys to the corresponding scenes and let the user customize the colours and light intensity.
-That feature is important because the System must be useful in the sunny morning and in the dark church without distracting the audience or the camera operator. The Controller must work also reliable because it runs on the same system which is running the live stream. Technically it can be run from any Device within the same network but for the better response time it should be run on the live system.
 
 ![Controller when connected to OBS and the Master](img/ControlerUIConnected.PNG)
 
-The Controller is programmed in Object Pascal with the Lazarus IDE. Therefor its mostly object-oriented designed and driven by events. The latest stable build of the controller is version 2.1, which I am going to show you. It has the most important features implemented and working plus some additional quality of life things. (It was also used in 3 different streams where I discovered more problems related to the reliability of the system and had the opportunity to hear other opinions and experiences. )-->maybe remove...
-
-The heavy lifting is done mostly by three classes: ttally, tscene and ttally_controler. (Yes I noticed the incorrect spelling of Controller. But to keep things consistent and because its hard to change it in the implementation I stick to it. :-/)
+The Controller is programmed in Object Pascal with the Lazarus IDE. Therefor its mostly object-oriented designed and driven by events.
+The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttally_controler`. (Yes I noticed the incorrect spelling of Controller. But to keep things consistent and because its hard to change it in the implementation, I stick to it. :-/)
 
 ![ttally class](img/ttally.png)
 ![tscene class](img/tscene.png)
-![ttally_controler class](img/ttally_controler.png)
+![ttally_controler class](img/tscene.png)
 
-As you can see the ttally_controler class is equipped with a variety of functions. <-- Add more here --> In the version 3.0, which I am currently working on, the ttally_controler gets reduced to its main functionality and the communication with the master gets outsourced. We will be concentrating on the init() procedure. (Pascal uses the word "procedure" in place of "void").
+As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
 
 ## Code Snippet
 
-The init() procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent init() to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task -should OBS answer- into an task list.
+The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task -should OBS answer- into an task list.
 
-The task list is like an internal to-do list. The procedure check_tasklist() starts the function associated with the first task in the list and sets it as currenttask.
+The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
 
 ### tallycontroler.init()
+```
+procedure ttally_controler.init;  //Init of the controller
+var j,jarr:tjsonnode;
+    s:tscene;
+    i:integer;
+    req_result:ansistring;
+    current_scene:string;
+begin
+  case current_task of
+  'none': begin
+          l.print('INR: Request StudioModeStatus');
+          init_end:=false;
+          request('GetStudioModeStatus','');
+          //current_task:='init_mode';
+          tasklist.Add('init_mode');
+          end;
+  'init_mode':begin
+    l.print('INR: Got StudioModeStatus');
+    j:=tjsonnode.create;
+    if j.TryParse(wanted_msg) then begin
+       studio_mode:=j.Find('studio-mode').AsBoolean;
+       //tasklist.Delete(tasklist.IndexOf('init_mode'));
+    end;
+    j.Destroy;
+    //current_task:='init_scenes';
+    tasklist.add('init_scenes');
+    l.print('INR: Request SceneList');
+    request('GetSceneList','');
+    end;
+  'init_scenes': begin
+            l.print('INR: Got SceneList');
+            j:=tjsonnode.create;
+            if j.TryParse(wanted_msg) then begin
+               current_scene:=j.Find('current-scene').asstring;
+               jarr:=j.Find('scenes').AsArray;
+               for i:=0 to jarr.Count-1 do begin
+                  s:=tscene.create(jarr.Child(i).Find('name').AsString,i,global_colorset);
+                  s.set_tallys_update_trigger(@self.prime_tallys);
+                  if s.get_name=current_scene then begin
+                   s.set_state(sOn); //Maybe change
+                   active_scene:=s;
+                  end;
+                  scenes.add(s) //todo
+                end;
+            end;
+            //tasklist.Delete(tasklist.IndexOf('init_scenes'));
+            j.Destroy;
+            if studio_mode then begin
+              //current_task:='init_preview';
+              tasklist.add('init_preview');
+              l.print('INR: Request PreviewScene');
+              request('GetPreviewScene','');
+            end
+            else begin
+              init_end:=true;
+              l.print('INR: Init End');
+              //current_task:='none'
+            end;
+           end;
+  'init_preview':begin
+    l.print('INR: Got PreviewScene');
+    j:=tjsonnode.create;
+    if j.TryParse(wanted_msg) then begin
+       preview_scene:=get_scene_by_name(j.Find('name').AsString);
+       preview_scene.set_preview(true);
+       //tasklist.Delete(tasklist.IndexOf('init_preview'));
+    end;
+    j.Destroy;
+    //current_task:='none';
+    l.print('INR: Init End');
+    init_end:=true;
+    end;
+  end;
+  gui_update; //updates gui
+end;
 
-init() reads the variable currenttask and decodes the response from OBS. For parsing the JSON I use then jsontools library (<https://github.com/sysrpl/JsonTools>). It is simple to use: I create a tjsonnode (j:=tjsonnode.create;) and let it parse the received message. If that succeeds I use j.Find('\<keyword\>') to get the value of that field.
+```
+
+
+`init()` reads the variable `currenttask` and decodes the response from OBS. For parsing the JSON I use then jsontools library (<https://github.com/sysrpl/JsonTools>). It is simple to use: I create a `tjsonnode` (`j:=tjsonnode.create;`) and let it parse the received message. If that succeeds I use `j.Find('\<keyword\>')` to get the value of that field.
 
 Note that the order of requests matter. First, I have to find out in which mode OBS currently runs. After that I must get a list of all scenes. The corresponding request also delivers the current output scene. After I have all the scenes created as objects and initialized, I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are stored in extra variables for quick access.
 
-The l.print() is a function of the tlog object. The controller is equipped with an log window which I used for debugging. I show this later in the demo.
+The `l.print()` is a function of the `tlog` object. The controller is equipped with an log window which I used for debugging. I show this later in the demo.
 
 ![log output of init() procedure](img/output_of_init().PNG)
 
@@ -81,7 +149,7 @@ The l.print() is a function of the tlog object. The controller is equipped with 
 
 ## Conclusion of the Project
 
-For now, there are more Tally Light solutions for OBS then it was at the start of the project but nothing similar to my solution. I am happy that the essential of the system work reliable enough to be tested in production. In the moment I redesign the serial communication between the Controller and the Master because I wasn't happy about the solution and the protocol design. As the project grows, I extended the tlog library with a command line and autocompletion. Therefore, debugging gets way easier because now I can trigger and test specific functions on its own without resetting the program or add extra elements to the UI.  
+For now, there are more Tally Light solutions for OBS then it was at the start of the project but nothing similar to my solution. I am happy that the essential of the system work reliable enough to be tested in production. In the moment I redesign the serial communication between the Controller and the Master because I wasn't happy about the solution and the protocol design. As the project grows, I extended the `tlog` library with a command line and autocompletion. Therefore, debugging gets way easier because now I can trigger and test specific functions on its own without resetting the program or add extra elements to the UI.  
 
 ### Further improvements / ToDo's
 
