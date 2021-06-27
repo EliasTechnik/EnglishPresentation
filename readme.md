@@ -42,14 +42,13 @@ The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttall
 
 ![ttally class](img/lo_res/ttally.jpg)
 ![tscene class](img/lo_res/tscene.jpg)
-![ttallycontroler class](img/lo_res/ttallycontroler.jpg)
+![ttallycontroler class](img/ttallycontroler.png)
 
 As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
 
 ## Code Snippet
 
 The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task (if OBS answers) into an task list.
-
 The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
 
 ```Delphi ttally_controler.init()
@@ -126,10 +125,9 @@ end;
 
 Note that the order of requests matter. First, I have to find out in which mode OBS currently runs. After that I must get a list of all scenes. The corresponding request also delivers the current output scene. After I have all the scenes created as objects and initialized, I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are stored in extra variables for quick access.
 
-The `l.print()` is a function of the `tlog` object. The controller is equipped with an log window which I used for debugging. I show this later in the demo.
+The `l.print()` is a function of the `tlog` object. The controller is equipped with an log window which I use for debugging. The output from `init()` starts with `INR:` :
 
 ![log output of init() procedure](img/lo_res/output_of_init.jpg)
-
 
 ## Conclusion of the Project
 
@@ -138,6 +136,7 @@ For now, there are more Tally Light solutions for OBS then it was at the start o
 ### Further improvements / ToDo's
 
 The project does not end there. Like I mentioned before, I want to add some more features and change specific things:
+
 - rewrite the Master firmware for better reliance and performance
 - implement ping feature and measure response time
 - dim the light of each tally individually

@@ -13,14 +13,14 @@ class ttally_controler{
     -ansistring wanted_msg
     -boolmsg_received
     -tprocnoargs gui_update
-    -bool wait_for_msg:boolean
-    -string current_task:string
-    -tscene active_scene:tscene
-    -tscene preview_scene:tscene
-    -tscene next_scene:tscene
+    -bool wait_for_msg
+    -string current_task
+    -tscene active_scene
+    -tscene preview_scene
+    -tscene next_scene
     -bool studio_mode
     -tswstate switch_state
-    -int next_tally_id:integer
+    -int next_tally_id
     -ansistring notification_text
     -tcolorset global_colorset
     -void init()
