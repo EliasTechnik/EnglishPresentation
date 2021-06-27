@@ -136,11 +136,11 @@ The `l.print()` is a function of the `tlog` object. The controller is equipped w
 
 ## Conclusion of the Project
 
-For now, there are more Tally Light solutions for OBS then it was at the start of the project but nothing similar to my solution. I am happy that the essential of the system work reliable enough to be tested in production. 
+For now, there are more Tally Light solutions for OBS available then it was at the start of the project but nothing similar to my solution. I am happy that the essential of the system work reliable enough to be tested in production.
 
-In the moment I redesign the serial communication between the Controller and the Master because I wasn't particular happy about the protocol design and the solution in general.
+The project isn't completed. In the moment I redesign the serial communication between the Controller and the Master because I wasn't particular happy about the protocol design and the solution in general.
 
-*Side fact: As the project grows, I extended the `tlog` library with a command line and autocompletion. Therefore, debugging gets way easier because now I can trigger and test specific functions on its own without resetting the program or add extra elements to the UI. Maybe I convert tlog to an complete UI component which can be added to any Lazarus project.*  
+*Side fact: As the project grows, I extended the `tlog` library with a command line and autocompletion. Therefore, debugging gets way easier because now I can trigger and test specific functions on its own without resetting the program or add extra elements to the UI. Maybe I convert `tlog` to an complete UI component which can be added to any Lazarus project.*  
 
 ![cam active front](img/lo_res/cam_active_front.jpg)
 ![cam preview](img/lo_res/cam_preview.jpg)
