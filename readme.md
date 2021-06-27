@@ -44,7 +44,7 @@ The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttall
 ![ttally class](img/lo_res/ttally.jpg)
 ![tscene class](img/lo_res/tscene.jpg)
 
-![ttally_controler class](img/lo_res/ttally_controler.jpg)
+![ttallycontroler class](img/lo_res/ttallycontroler.jpg)
 
 As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
 
@@ -53,8 +53,6 @@ As you can see the `ttally_controler` class is equipped with a variety of functi
 The `init()` procedure is called multiple times after the WebSocket connection with OBS is established. It gets the scene names, the current mode of OBS (normal or studio), the currently active (live) scene and, if the studio mode is used, the scene which is currently in the preview. To do so it sends multiple request to OBS and decodes the returning JSON data. To prevent `init()` to block the program while it waits for OBS to respond (that would make the UI non responsive for that timeframe) the procedure registers the next task -should OBS answer- into an task list.
 
 The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
-
-### tallycontroler.init()
 
 ```Delphi ttally_controler.init()
 procedure ttally_controler.init;  //Init of the controller
@@ -132,7 +130,7 @@ Note that the order of requests matter. First, I have to find out in which mode 
 
 The `l.print()` is a function of the `tlog` object. The controller is equipped with an log window which I used for debugging. I show this later in the demo.
 
-![log output of init() procedure](img/lo_res/output_of_init().jpg)
+![log output of init() procedure](img/lo_res/output_of_init.jpg)
 
 ### demonstration of OBS connection
 
