@@ -13,37 +13,37 @@ Tally Lights are, mostly red and green, lights which are mounted on each camera.
 
 I thought about the project and how I can accomplish all the features in a practicable manner. For convenience I wanted the solution to be wireless to but also without the hassle to connect to an existing network. The solution I came up with looks like that:
 
-![Overview of the system components](img/overview.png)
+![Overview of the system components](img/lo_res/overview.jpg)
 
 ### Client (TallyLight)
 
 The actual lights consist of 6 addressable LEDs, five dipswitches and a ESP32 development board. The power is feed through USB. Ether from an power bank or a USB charger.
 
-![Inside view of one Tallylight](img/tally_open.jpg)
+![Inside view of one Tallylight](img/lo_res/tally_open.jpg)
 
 In the moment, everything is housed in a cheap, self-crafted housing but I plan on creating a 3d-printed version of it. The tally has an antenna to improve the Wi-Fi-range and uses the flash-socket of the camera to mount on.
 
-![Tallylight mounted on a camera](img/tally_on_camera.jpg)
+![Tallylight mounted on a camera](img/lo_res/tally_on_camera.jpg)
 
 ### Master (Base station)
 
 Because the 802.11 LR mode is specific for the ESP32 the master must be an ESP32 to. It must be connected to an USB port at the pc which is running the control software. The clients connect on its own with the master and the master routes the relevant information to each client. It should also detect the system health (like Clients which are offline or data inconsistencies).
 
-![Master closed](img/master_closed.jpg)
-![Master open](img/master_open.jpg)
+![Master closed](img/lo_res/master_closed.jpg)
+![Master open](img/lo_res/master_open.jpg)
 
 ### Controller
 
 The Controller fulfils 3 roles. It connects with OBS and parses the necessary data for the system. It also communicates with the master to edit the colours of the Tally lights. As the brain of the system, it also provides a graphical user interface to configure the system, assign Tallys to the corresponding scenes and let the user customize the colours and light intensity.
 
-![Controller when connected to OBS and the Master](img/ControlerUIConnected.PNG)
+![Controller when connected to OBS and the Master](img/lo_res/ControlerUIConnected.jpg)
 
 The Controller is programmed in Object Pascal with the Lazarus IDE. Therefor its mostly object-oriented designed and driven by events.
 The heavy lifting is done mostly by three classes: `ttally`, `tscene` and `ttally_controler`. (Yes I noticed the incorrect spelling of Controller. But to keep things consistent and because its hard to change it in the implementation, I stick to it. :-/)
 
-![ttally class](img/ttally.png)
-![tscene class](img/tscene.png)
-![ttally_controler class](img/ttally_controler.png)
+![ttally class](img/lo_res/ttally.jpg)
+![tscene class](img/lo_res/tscene.jpg)
+![ttally_controler class](img/lo_res/ttally_controler.jpg)
 
 As you can see the `ttally_controler` class is equipped with a variety of functions. Thats not ideal but works for now. We will be concentrating on the `init()` procedure. (Pascal uses the word "procedure" in place of "void").
 
@@ -54,7 +54,8 @@ The `init()` procedure is called multiple times after the WebSocket connection w
 The task list is like an internal to-do list. The procedure `check_tasklist()` starts the function associated with the first task in the list and sets it as currenttask.
 
 ### tallycontroler.init()
-```Delphi ttally_controler.init.pas
+
+```Delphi ttally_controler.init()
 procedure ttally_controler.init;  //Init of the controller
 var j,jarr:tjsonnode;
     s:tscene;
@@ -67,7 +68,6 @@ begin
           l.print('INR: Request StudioModeStatus');
           init_end:=false;
           request('GetStudioModeStatus','');
-          //current_task:='init_mode';
           tasklist.Add('init_mode');
           end;
   'init_mode':begin
@@ -75,11 +75,8 @@ begin
     j:=tjsonnode.create;
     if j.TryParse(wanted_msg) then begin
        studio_mode:=j.Find('studio-mode').AsBoolean;
-       //tasklist.Delete(tasklist.IndexOf('init_mode'));
     end;
     j.Destroy;
-    //current_task:='init_scenes';
-    tasklist.add('init_scenes');
     l.print('INR: Request SceneList');
     request('GetSceneList','');
     end;
@@ -99,10 +96,8 @@ begin
                   scenes.add(s) //todo
                 end;
             end;
-            //tasklist.Delete(tasklist.IndexOf('init_scenes'));
             j.Destroy;
             if studio_mode then begin
-              //current_task:='init_preview';
               tasklist.add('init_preview');
               l.print('INR: Request PreviewScene');
               request('GetPreviewScene','');
@@ -119,10 +114,8 @@ begin
     if j.TryParse(wanted_msg) then begin
        preview_scene:=get_scene_by_name(j.Find('name').AsString);
        preview_scene.set_preview(true);
-       //tasklist.Delete(tasklist.IndexOf('init_preview'));
     end;
     j.Destroy;
-    //current_task:='none';
     l.print('INR: Init End');
     init_end:=true;
     end;
@@ -132,14 +125,13 @@ end;
 
 ```
 
-
-`init()` reads the variable `currenttask` and decodes the response from OBS. For parsing the JSON I use then jsontools library (<https://github.com/sysrpl/JsonTools>). It is simple to use: I create a `tjsonnode` (`j:=tjsonnode.create;`) and let it parse the received message. If that succeeds I use `j.Find('\<keyword\>')` to get the value of that field.
+`init()` reads the variable `currenttask` and decodes the response from OBS. For parsing the JSON I use then jsontools library (<https://github.com/sysrpl/JsonTools >). It is simple to use: I create a `tjsonnode` (`j:=tjsonnode.create;`) and let it parse the received message. If that succeeds I use `j.Find('\<keyword\>')` to get the value of that field.
 
 Note that the order of requests matter. First, I have to find out in which mode OBS currently runs. After that I must get a list of all scenes. The corresponding request also delivers the current output scene. After I have all the scenes created as objects and initialized, I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are stored in extra variables for quick access.
 
 The `l.print()` is a function of the `tlog` object. The controller is equipped with an log window which I used for debugging. I show this later in the demo.
 
-![log output of init() procedure](img/output_of_init().PNG)
+![log output of init() procedure](img/lo_res/output_of_init().jpg)
 
 ### demonstration of OBS connection
 
