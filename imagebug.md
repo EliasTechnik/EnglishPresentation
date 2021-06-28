@@ -14,3 +14,8 @@ It seams like the first underscore in the alt-text is interpreted. Therefor the 
 
 ![ttally controler class](img/lo_res/imagebug/ttally_controller.jpg)
 
+It is still not displayed but the sourcecode isn't shown anymore.
+
+## The same picture with the underscore in the alt-text and filename removed
+
+![ttally controler class](img/lo_res/imagebug/ttallycontroller.jpg)
