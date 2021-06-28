@@ -126,7 +126,7 @@ begin
 end;
 ```
 
-`init()` reads the variable `currenttask` and decodes the response from OBS. For parsing the JSON I use then jsontools library (<https://github.com/sysrpl/JsonTools >). It is simple to use: I create a `tjsonnode` (`j:=tjsonnode.create;`) and let it parse the received message. If that succeeds I use `j.Find('\<keyword\>')` to get the value of that field.
+`init()` reads the variable `currenttask` and decodes the response from OBS. For parsing the JSON I use the jsontools library (<https://github.com/sysrpl/JsonTools >). It is simple to use: I create a `tjsonnode` (`j:=tjsonnode.create;`) and let it parse the received message. If that succeeds I use `j.Find('\<keyword\>')` to get the value of that field.
 
 Note that the order of requests matters. First, I have to find out in which mode OBS currently runs. After that I must get a list of all scenes. The corresponding request also delivers the current output scene. After I have all the scenes created as objects and initialized, I can request the preview scene, if the OBS runs the studio mode. The pointer of the current and the preview scene are stored in extra variables for quick access.
 
