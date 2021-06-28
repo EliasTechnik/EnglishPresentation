@@ -3,8 +3,8 @@
 # Bug: image does not load with underscore in Alt-Text
 
 The markdown file and the picture is located here:
-<https://github.com/EliasTechnik/EnglishPresentation > (Markdown)
-<https://github.com/EliasTechnik/EnglishPresentation/blob/296de23b0fccd000b12f582b174769fdfb84f200/img/lo_res/imagebug/ttally_controller.jpg > (Picture)
+https://github.com/EliasTechnik/EnglishPresentation (Markdown)
+https://github.com/EliasTechnik/EnglishPresentation/blob/296de23b0fccd000b12f582b174769fdfb84f200/img/lo_res/imagebug/ttally_controller.jpg (Picture)
 
 ## Bug
 
