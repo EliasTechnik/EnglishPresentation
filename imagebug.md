@@ -2,4 +2,4 @@
 
 # Image with underscore in the filename
 
-![image with underscore](img/lo_res/imagebug/tally_controller.png)
+![image with underscore](img/lo_res/imagebug/ttally_controller.png)
