@@ -1,6 +1,10 @@
 <https://LiaScript.github.io/course/?https://github.com/EliasTechnik/EnglishPresentation/blob/main/imagebug.md>
 
-# Bug: image does not load with underscore in Filename
+# Bug: image does not load with underscore in Alt-Text
+
+The markdown file and the picture is located here:
+<https://github.com/EliasTechnik/EnglishPresentation> (Markdown)
+<https://github.com/EliasTechnik/EnglishPresentation/blob/296de23b0fccd000b12f582b174769fdfb84f200/img/lo_res/imagebug/ttally_controller.jpg> (Picture)
 
 ## Bug
 
@@ -14,8 +18,7 @@ It seams like the first underscore in the alt-text is interpreted. Therefor the 
 
 ![ttally controler class](img/lo_res/imagebug/ttally_controller.jpg)
 
-It is still not displayed but the sourcecode isn't shown anymore.
+Now it is displayed correct. It seems that the underscore in the alt-text is a problem. Maybe the underscore in the path contributes also to it.
 
-## The same picture with the underscore in the alt-text and filename removed
+I am not sure if an underscore in an alt-text should be interpreted as a text-formating character. If so please close this issue because its not a bug.
 
-![ttally controler class](img/lo_res/imagebug/ttallycontroller.jpg)
